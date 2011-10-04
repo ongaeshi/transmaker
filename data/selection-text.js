@@ -1,5 +1,5 @@
 //
-// @brief Insert Translate
+// @brief Selection Text
 // @author ongaeshi
 // @date   2011/10/04
 
