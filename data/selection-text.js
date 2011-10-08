@@ -3,7 +3,11 @@
 // @author ongaeshi
 // @date   2011/10/04
 
-var translateNode;
+// 複数の翻訳ノードを連結するためのもの
+const TRANSLATE_DELIMITER = " @ ";
+
+// 翻訳するノード一覧
+var gSelectNodes;
 
 self.port.on("replace-select", function() {
   var selection = window.getSelection();
@@ -27,20 +31,24 @@ self.port.on("replace-select", function() {
         return v.text;
       });
 
-      Dump.p(srcArray);
-
-      if (range.startContainer.nodeType == 3) {
+      if (srcArray.length > 0) {
         // @todo 一時変数に保存するのでは無く、コンテナに貯蓄してidを渡すのが良さそう
         // @todo rangeを一気に解析してコンテナに保持、検索先でいい感じにする
-        translateNode = range.startContainer; 
-        self.port.emit("translate", translateNode.wholeText);
+        gSelectNodes = selectNodes;
+        self.port.emit("translate", srcArray);
       }
     }
   }
 });
 
 self.port.on("replace", function (dst) {
+  // 翻訳単位に分割
+  var dstArray = dst.split(TRANSLATE_DELIMITER);
+
   // @todo アニメーション処理
-  translateNode.replaceWholeText(dst);
+  // @todo 選択範囲の更新(少なくとも解除するべき)
+  for (var i = 0; i < gSelectNodes.length; i++) {
+    gSelectNodes[i].node.replaceWholeText(dstArray[i]);
+  }
 });
 
