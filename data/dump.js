@@ -26,7 +26,7 @@ var Dump = {
   // --------------------------------------
   v: function(v) {
     if (typeof v == "string")
-      v = '"' + v + '"';
+      v = '"' + v.replace("\n", "\\n").replace("\t", "\\t") + '"';
 
     return v;
   },
