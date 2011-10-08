@@ -2,13 +2,25 @@
 // @brief Dump#p (Ruby Object#p)
 // @author ongaeshi
 // @date   2011/10/09
+//
+// Dump.p("Hello");                             # ok
+// Dump.p(1.5);                                 # ok
+// Dump.p([1, [2, [3, 4, 5]], {a:"b", b:"c"}]); # ok
+// Dump.p(window);                              # これがまだ出来ない..
+//
 
 var Dump = {
   p: function(v) {
-    if (this.isArray(v))
-      this.arrayObj(v);
+    console.log(this.inspect(v));
+  },
+
+  inspect: function(v) {
+    if (this.is_array(v))
+      return this.array_s(v);
+    else if (typeof v == "object")
+      return this.obj_s(v);
     else
-      this.obj(v);
+      return this.v(v);
   },
 
   // --------------------------------------
@@ -23,22 +35,18 @@ var Dump = {
     var a = [];
     for(var i in o)
       a.push(i + ": "+ this.v(o[i]));
-    return "{ " + a.join(", ") + " }";
+    return "{" + a.join(", ") + "}";
   },
 
-  obj: function(v) {
-    console.log(this.obj_s(v));
-  },
-
-  arrayObj: function(v) {
+  array_s: function(v) {
     var a = [];
     for (var i = 0; i < v.length; i++)
-      a.push(this.obj_s(v[i]));
-    console.log("[" + a.join(", ") + "]");
+      a.push(this.inspect(v[i]));
+    return "[" + a.join(", ") + "]";
   },
 
   // --------------------------------------
-  isArray: function(v) { return Object.prototype.toString.call(v)=="[object Array]"; }
+  is_array: function(v) { return Object.prototype.toString.call(v)=="[object Array]"; }
 
 };
 
