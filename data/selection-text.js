@@ -51,10 +51,46 @@ self.port.on("replace-select", function() {
   }
 });
 
+var easeInQuad = function (t, b, c, d) {
+  return c*(t/=d)*t + b;
+}
+
+var easeOutQuad = function (t, b, c, d) {
+  return -c *(t/=d)*(t-2) + b;
+}
+
+var replaceAnimation = function (node, dst) {
+  var src = node.wholeText,
+      progress = 0;
+
+  var changeMsec = 250;
+  var intervalMsec = 32;
+  var currentTime = 0;
+
+  var timer = setInterval(function() {
+    // var rate = progress * intervalMsec / changeMsec;
+
+    var rate = easeOutQuad(currentTime, 0, 1, changeMsec);
+    //Dump.p(rate);
+    
+    node.replaceWholeText(dst.substring(0, src.length * rate) +
+                          src.substring(dst.length * rate, dst.length));
+    //progress++;
+
+    currentTime += intervalMsec;
+
+    if (currentTime >= changeMsec) {
+      node.replaceWholeText(dst);
+      clearInterval(timer);
+    }
+  }, intervalMsec);
+}
+
 self.port.on("replace", function (translatedArray) {
-  // アニメーション処理
+  // テキスト入れ替え
   for (var i = 0; i < gSelectNodes.length; i++) {
-    gSelectNodes[i].node.replaceWholeText(translatedArray[i].TranslatedText);
+    //gSelectNodes[i].node.replaceWholeText(translatedArray[i].TranslatedText);
+    replaceAnimation(gSelectNodes[i].node, translatedArray[i].TranslatedText);
   }
 
   // 選択範囲をクリア
