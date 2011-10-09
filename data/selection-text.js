@@ -6,9 +6,11 @@
 // 翻訳するノード一覧
 var gSelectNodes;
 
-function deselectForFirefox() {
-  var selection = window.getSelection();
-  selection.collapse(document.body, 0);
+function deselectWindow() {
+  var sel = window.getSelection();
+
+  if (sel)
+    sel.removeAllRanges();
 }
 
 self.port.on("replace-select", function() {
@@ -40,6 +42,7 @@ self.port.on("replace-select", function() {
     });
 
     if (srcArray.length > 0) {
+      // @todo 連続翻訳があると上手く動かない気がする
       // @todo 一時変数に保存するのでは無く、コンテナに貯蓄してidを渡すのが良さそう
       // @todo rangeを一気に解析してコンテナに保持、検索先でいい感じにする
       gSelectNodes = selectNodes;
@@ -49,12 +52,15 @@ self.port.on("replace-select", function() {
 });
 
 self.port.on("replace", function (translatedArray) {
-  // @todo アニメーション処理
-  // @todo 選択範囲の更新(少なくとも解除するべき)
+  // アニメーション処理
   for (var i = 0; i < gSelectNodes.length; i++) {
     gSelectNodes[i].node.replaceWholeText(translatedArray[i].TranslatedText);
   }
 
-  deselectForFirefox();
+  // 選択範囲をクリア
+  deselectWindow();
+
+  // 翻訳ノードを解除
+  gSelectNodes = null;
 });
 
