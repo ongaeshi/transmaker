@@ -60,30 +60,28 @@ var easeOutQuad = function (t, b, c, d) {
 }
 
 var replaceAnimation = function (node, dst) {
-  var src = node.wholeText,
-      progress = 0;
+  // パラメータ
+  const CHANGE_MSEC   = 300,
+        INTERVAL_MSEC = 32; // 30F
 
-  var changeMsec = 250;
-  var intervalMsec = 32;
+  // 作業用変数
+  var src = node.wholeText;
   var currentTime = 0;
 
+  // アニメーション処理
   var timer = setInterval(function() {
-    // var rate = progress * intervalMsec / changeMsec;
+    var rate = easeOutQuad(currentTime, 0, 1, CHANGE_MSEC);
 
-    var rate = easeOutQuad(currentTime, 0, 1, changeMsec);
-    //Dump.p(rate);
-    
     node.replaceWholeText(dst.substring(0, src.length * rate) +
                           src.substring(dst.length * rate, dst.length));
-    //progress++;
 
-    currentTime += intervalMsec;
+    currentTime += INTERVAL_MSEC;
 
-    if (currentTime >= changeMsec) {
+    if (currentTime >= CHANGE_MSEC) {
       node.replaceWholeText(dst);
       clearInterval(timer);
     }
-  }, intervalMsec);
+  }, INTERVAL_MSEC);
 }
 
 self.port.on("replace", function (translatedArray) {
