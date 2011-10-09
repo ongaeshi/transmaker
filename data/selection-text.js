@@ -6,6 +6,11 @@
 // 翻訳するノード一覧
 var gSelectNodes;
 
+function deselectForFirefox() {
+  var selection = window.getSelection();
+  selection.collapse(document.body, 0);
+}
+
 self.port.on("replace-select", function() {
   var selection = window.getSelection();
 
@@ -49,5 +54,7 @@ self.port.on("replace", function (translatedArray) {
   for (var i = 0; i < gSelectNodes.length; i++) {
     gSelectNodes[i].node.replaceWholeText(translatedArray[i].TranslatedText);
   }
+
+  deselectForFirefox();
 });
 
