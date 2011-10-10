@@ -1,12 +1,12 @@
 //
-// @brief Replace Translate
+// @brief Insert Translate
 // @author ongaeshi
 // @date   2011/10/04
 
 // 翻訳するノード一覧
 var gSelectNodes;
 
-self.port.on("replace-translate", function() {
+self.port.on("insert-translate", function() {
   var selection = window.getSelection();
 
   if (selection && isActiveWindow()) {
@@ -18,12 +18,12 @@ self.port.on("replace-translate", function() {
       // @todo 一時変数に保存するのでは無く、コンテナに貯蓄してidを渡すのが良さそう
       // @todo rangeを一気に解析してコンテナに保持、検索先でいい感じにする
       gSelectNodes = nodes;
-      self.port.emit("translate", {msg:"replace-translate-end", texts:texts});
+      self.port.emit("translate", {msg:"insert-translate-end", texts:texts});
     }
   }
 });
 
-self.port.on("replace-translate-end", function (translatedArray) {
+self.port.on("insert-translate-end", function (translatedArray) {
   // undo用のデータ
   var undoNodes = [];
   
@@ -33,7 +33,7 @@ self.port.on("replace-translate-end", function (translatedArray) {
     undoNodes.push({node: gSelectNodes[i].node, text: gSelectNodes[i].node.wholeText + ''}); // 文字列は複製しておくこと
     
     // 翻訳アニメーションの実行
-    replaceAnimation(gSelectNodes[i].node, translatedArray[i].TranslatedText);
+    insertAnimation(gSelectNodes[i].node, "(" + translatedArray[i].TranslatedText + ")");
   }
 
   // コンテナに記録

@@ -36,6 +36,30 @@ var replaceAnimation = function (node, dst) {
   }, INTERVAL_MSEC);
 }
 
+var insertAnimation = function (node, insertText) {
+  // パラメータ
+  const CHANGE_MSEC   = 300,
+        INTERVAL_MSEC = 32; // 30F
+
+  // 作業用変数
+  var src = node.wholeText;
+  var currentTime = 0;
+
+  // アニメーション処理
+  var timer = setInterval(function() {
+    var rate = easeOutQuad(currentTime, 0, 1, CHANGE_MSEC);
+
+    node.replaceWholeText(src + insertText.substring(0, insertText.length * rate));
+
+    currentTime += INTERVAL_MSEC;
+
+    if (currentTime >= CHANGE_MSEC) {
+      node.replaceWholeText(src + insertText);
+      clearInterval(timer);
+    }
+  }, INTERVAL_MSEC);
+}
+
 var undoAnimation = function (node, dst) {
   // @todo アニメーションにすると上手くいかない？要検証。
   node.replaceWholeText(dst);
