@@ -6,9 +6,6 @@
 // 翻訳するノード一覧
 var gSelectNodes;
 
-// undo用のコンテナ
-var gUndoContainer = [];
-
 self.port.on("replace-translate", function() {
   var selection = window.getSelection();
 
@@ -47,20 +44,5 @@ self.port.on("replace-translate-end", function (translatedArray) {
 
   // 翻訳ノードを解除
   gSelectNodes = null;
-});
-
-self.port.on("undo-translate", function () {
-  if (isActiveWindow()) {
-    // undo用のデータ
-    var undoNodes = gUndoContainer.pop();
-
-    if (undoNodes) {
-      // テキスト入れ替え
-      for (var i = 0; i < undoNodes.length; i++) {
-        // 翻訳アニメーションの実行
-        undoAnimation(undoNodes[i].node, undoNodes[i].text);
-      }
-    }
-  }
 });
 
