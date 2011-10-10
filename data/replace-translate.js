@@ -6,6 +6,9 @@
 // 翻訳するノード一覧
 var gSelectNodes;
 
+// undo用のコンテナ
+var gUndoContainer = [];
+
 self.port.on("replace-translate", function() {
   var selection = window.getSelection();
 
@@ -24,16 +27,40 @@ self.port.on("replace-translate", function() {
 });
 
 self.port.on("replace-translate-end", function (translatedArray) {
+  // undo用のデータ
+  var undoNodes = [];
+  
   // テキスト入れ替え
   for (var i = 0; i < gSelectNodes.length; i++) {
-    //gSelectNodes[i].node.replaceWholeText(translatedArray[i].TranslatedText);
+    // 翻訳前のテキストを記録
+    undoNodes.push({node: gSelectNodes[i].node, text: gSelectNodes[i].node.wholeText + ''}); // 文字列は複製しておくこと
+    
+    // 翻訳アニメーションの実行
     replaceAnimation(gSelectNodes[i].node, translatedArray[i].TranslatedText);
   }
+
+  // コンテナに記録
+  gUndoContainer.push(undoNodes);
 
   // 選択範囲をクリア
   deselectWindow();
 
   // 翻訳ノードを解除
   gSelectNodes = null;
+});
+
+self.port.on("undo-translate", function () {
+  if (isActiveWindow()) {
+    // undo用のデータ
+    var undoNodes = gUndoContainer.pop();
+
+    if (undoNodes) {
+      // テキスト入れ替え
+      for (var i = 0; i < undoNodes.length; i++) {
+        // 翻訳アニメーションの実行
+        undoAnimation(undoNodes[i].node, undoNodes[i].text);
+      }
+    }
+  }
 });
 

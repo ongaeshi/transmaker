@@ -36,3 +36,7 @@ var replaceAnimation = function (node, dst) {
   }, INTERVAL_MSEC);
 }
 
+var undoAnimation = function (node, dst) {
+  // @todo アニメーションにすると上手くいかない？要検証。
+  node.replaceWholeText(dst);
+}
