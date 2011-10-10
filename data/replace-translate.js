@@ -9,7 +9,7 @@ var gSelectNodes;
 self.port.on("replace-translate", function() {
   var selection = window.getSelection();
 
-  if (selection) {
+  if (selection && isActiveWindow()) {
     var nodes = findSelectionNode(selection),
         texts = nodes2texts(nodes);
 
