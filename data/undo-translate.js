@@ -6,6 +6,10 @@
 // undo用のコンテナ
 var gUndoContainer = [];
 
+function addUndoContainer (undoNodes) {
+  gUndoContainer.push(undoNodes);
+}
+
 self.port.on("undo-translate", function () {
   if (isActiveWindow()) {
     // undo用のデータ

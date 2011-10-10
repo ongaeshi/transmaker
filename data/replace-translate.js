@@ -37,7 +37,7 @@ self.port.on("replace-translate-end", function (translatedArray) {
   }
 
   // コンテナに記録
-  gUndoContainer.push(undoNodes);
+  addUndoContainer(undoNodes);
 
   // 選択範囲をクリア
   deselectWindow();
