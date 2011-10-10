@@ -24,8 +24,8 @@ var replaceAnimation = function (node, dst) {
   var timer = setInterval(function() {
     var rate = easeOutQuad(currentTime, 0, 1, CHANGE_MSEC);
 
-    node.replaceWholeText(dst.substring(0, src.length * rate) +
-                          src.substring(dst.length * rate, dst.length));
+    node.replaceWholeText(dst.substring(0, dst.length * rate) +
+                          src.substring(src.length * rate, src.length));
 
     currentTime += INTERVAL_MSEC;
 
