@@ -33,7 +33,7 @@ self.port.on("replace-translate-end", function (translatedArray) {
     undoNodes.push({node: gSelectNodes[i].node, text: gSelectNodes[i].node.wholeText + ''}); // 文字列は複製しておくこと
     
     // 翻訳アニメーションの実行
-    replaceAnimation(gSelectNodes[i].node, translatedArray[i].TranslatedText);
+    replaceAnimation(gSelectNodes[i].node, gSelectNodes[i].replaceText(translatedArray[i].TranslatedText));
   }
 
   // コンテナに記録
