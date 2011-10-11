@@ -42,7 +42,7 @@ var replaceAnimation = function (node, dst) {
   }, INTERVAL_MSEC);
 }
 
-var insertAnimation = function (node, insertText) {
+var insertAnimation = function (node, insertText, insertPos) {
   // パラメータ
   const CHANGE_MSEC   = 300,
         INTERVAL_MSEC = 32; // 30F
@@ -55,12 +55,12 @@ var insertAnimation = function (node, insertText) {
   var timer = setInterval(function() {
     var rate = easeOutQuad(currentTime, 0, 1, CHANGE_MSEC);
 
-    node.replaceWholeText(src + insertText.substring(0, insertText.length * rate));
-
+    node.replaceWholeText(src.substring(0, insertPos) + insertText.substring(0, insertText.length * rate) + src.substring(insertPos));
+    
     currentTime += INTERVAL_MSEC;
 
     if (currentTime >= CHANGE_MSEC) {
-      node.replaceWholeText(src + insertText);
+      node.replaceWholeText(src.substring(0, insertPos) + insertText + src.substring(insertPos));
       clearInterval(timer);
     }
   }, INTERVAL_MSEC);

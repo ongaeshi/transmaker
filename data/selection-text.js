@@ -19,6 +19,10 @@ SelectNode.prototype.replaceText = function (translatedText) {
   return text.slice(0, this.startOffset) + translatedText + text.slice(this.endOffset);
 }
 
+SelectNode.prototype.insertPos = function () {
+  return this.endOffset;
+}
+
 function findSelectionNode (selection) {
   var nodes = [];
   
