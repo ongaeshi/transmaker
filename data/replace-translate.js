@@ -20,6 +20,7 @@ self.port.on("replace-translate", function() {
       gSelectNodes = nodes;
 
       // from:"" にして、自動判定にするかは悩む所だが短い単語を訳しやすくするためページ内言語設定を優先する。
+      // その代わり、日本語のページ内にある英語等を訳すことは出来ない。
       self.port.emit("translate", {msg:"replace-translate-end", texts:texts, from:document.documentElement.lang });
     }
   }
