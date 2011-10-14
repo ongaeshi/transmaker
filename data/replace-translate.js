@@ -18,6 +18,8 @@ self.port.on("replace-translate", function() {
       // @todo 一時変数に保存するのでは無く、コンテナに貯蓄してidを渡すのが良さそう
       // @todo rangeを一気に解析してコンテナに保持、検索先でいい感じにする
       gSelectNodes = nodes;
+
+      // from:"" にして、自動判定にするかは悩む所だが短い単語を訳しやすくするためページ内言語設定を優先する。
       self.port.emit("translate", {msg:"replace-translate-end", texts:texts, from:document.documentElement.lang });
     }
   }
