@@ -1,5 +1,3 @@
-This is the justtrans add-on.  It contains:
+You can easily browse the pages of foreign countries. 
 
-* A program (lib/main.js).
-* A few tests.
-* Some meager documentation.
+* Translate selected text, rewrite it "directly" to the page content. (No pop up!)
