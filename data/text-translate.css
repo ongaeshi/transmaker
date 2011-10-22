@@ -17,6 +17,13 @@
 
 #translate {
     clear: left;
+    float: left;
+    margin: 5px;
+}
+
+#dst-lang {
+    float: left;
+    margin: 5px;
 }
 
 textarea {
