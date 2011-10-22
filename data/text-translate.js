@@ -1,7 +1,11 @@
 // 翻訳結果を送信
 $(function() {
   $("#translate-button").click(function(){
-    self.postMessage($("#src > textarea").val());
+    var msg = {
+      to: $('#dst-lang-select option:selected').val(),
+      text:$("#src > textarea").val()
+    };
+    self.postMessage(msg);
   });
 });
 
