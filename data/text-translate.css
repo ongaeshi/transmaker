@@ -1,3 +1,7 @@
+h1 {
+    margin: 5px;
+}
+
 #src {
     float: left;
     background-color: #FFFFFF;
@@ -15,15 +19,32 @@
     margin: 0px 5px;
 }
 
+#clear {
+    clear: both;
+}
+
 #translate {
+    float: left;
+    margin: 5px 20px;
+}
+
+#translate-button {
     clear: left;
     float: left;
     margin: 5px;
+    width: 100px;
+    height: 3em;
+}
+
+#from-lang {
+    float: left;
+/*     margin: 5px 0px 5px 50px; */
+    margin: 5px 5px;
 }
 
 #dst-lang {
     float: left;
-    margin: 5px;
+    margin: 5px 5px;
 }
 
 textarea {
