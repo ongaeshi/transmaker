@@ -2,6 +2,7 @@
 $(function() {
   $("#translate-button").click(function(){
     var msg = {
+      from: $('#from-lang-select option:selected').val(),
       to: $('#to-lang-select option:selected').val(),
       text:$("#src > textarea").val()
     };
