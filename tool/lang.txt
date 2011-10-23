@@ -1,8 +1,8 @@
 ar	Arabic
 bg	Bulgarian
 ca	Catalan
-zh-CHS	Chinese (Simplified)
-zh-CHT	Chinese (Traditional)
+zh-CHS	Chinese(Simplified)
+zh-CHT	Chinese(Traditional)
 cs	Czech
 da	Danish
 nl	Dutch
