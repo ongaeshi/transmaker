@@ -1,0 +1,94 @@
+ナビゲーション
+戻る 	command + ←, command + [, Delete
+進む 	command + →, command + ], Shift + Delete
+ホームページ 	option + home
+ファイルを開く 	command + O
+再読み込み 	F5, command + R
+再読み込み (キャッシュ上書き) 	command + shift + R
+読み込み中止 	Esc, command + .
+
+現在のページ
+ページの終端へ移動 	End
+ページの先頭へ移動 	Home
+次のフレームへ移動 	F6
+前のフレームへ移動 	Shift + F6
+プリント 	command + P
+別名でページを保存 	command + S
+ズームイン 	command + +
+ズームアウト 	command + -
+ズームをリセット 	command + 0
+
+編集
+コピー 	command + C
+カット 	command + X
+削除 	delete
+ペースト 	command + V
+やり直す 	command + shift + Z
+すべて選択 	command + A
+やり直す 	command + Z
+
+検索
+このページを検索 	command + F
+次を検索 	F3
+command + G
+前を検索 	Shift + F3, command + shift + G
+クイック検索でリンクを検索 	'
+クイック検索でテキストを検索 	/
+クイック検索バーを閉じる 	Esc - クイック検索バーにフォーカスがある時のみ
+Web 検索 	command + K
+検索エンジンの選択と管理
+(検索バーの選択時) 	option + ↑, option + ↓
+
+ウインドウ とタブ
+タブを閉じる(アプリタブを除く) 	command + W
+ウインドウ を閉じる 	command + shift + W
+タブを左へ移動(タブの選択時) 	command + ←, command + ↑
+タブを右へ移動(タブの選択時) 	command + →, command + ↓
+タブを先頭へ移動(タブの選択時) 	command + home
+タブを末尾へ移動(タブの選択時) 	command + end
+新規 タブ 	command + T
+新規 ウインドウ 	command + N
+次のタブ 	control + tab, control + page down, command + option + →
+新規 タブでアドレスを開く(ロケーションバーまたは検索バーから) 	option + return
+前のタブ 	control + shift + tab, control + page up, command + option + ←
+閉じたタブを開き直す 	command + shift + T
+閉じたウインドウ を開き直す 	command + shift + N
+タブを選択 (1 から 8) 	command + 1 から 8
+最後のタブを選択 	command + 9
+タブグループ表示 	command + shift + E
+タブグループ表示を閉じる 	Esc
+次のタブグループ(一部のキーボードレイアウトでのみ使用可) 	control + `
+前のタブグループ(一部のキーボードレイアウトでのみ使用可) 	control + shift + `
+
+履歴
+履歴サイドバー 	command + shift + H
+
+ブックマーク
+すべてのタブをブックマーク 	command + shift + D
+このページをブックマーク 	command + D
+ブックマークサイドバー 	command + B
+履歴とブックマークの管理 (ブックマーク) 	command + shift + B
+
+ツール
+ダウンロードウィンドウ 	command + J
+アドオンマネージャ 	command + shift + A
+Web コンソール 	command + shift + K
+	
+スクラッチパッド 	Shift + F4
+ページのソース 	command + U
+エラーコンソール 	command + shift + J
+ページの情報 	command + I
+プライベートブラウジングモードの切り替え 	command + shift + P
+最近の履歴を消去 	command + shift + delete
+
+
+その他
+.com アドレス補完 	command + return
+.net アドレス補完 	shift + return
+.org アドレス補完 	command + shift + return
+選択された自動補完エントリを削除 	shift + delete
+フルスクリーン の切り替え 	command+Shift+F
+	
+アドオンバーの表示/非表示 	command + /
+キャレットブラウズモードの切り替え 	F7
+ロケーションバーを選択 	command + L
