@@ -38,11 +38,10 @@ h1 {
 
 #from-lang {
     float: left;
-/*     margin: 5px 0px 5px 50px; */
     margin: 5px 5px;
 }
 
-#dst-lang {
+#to-lang {
     float: left;
     margin: 5px 5px;
 }

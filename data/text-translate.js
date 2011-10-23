@@ -2,7 +2,7 @@
 $(function() {
   $("#translate-button").click(function(){
     var msg = {
-      to: $('#dst-lang-select option:selected').val(),
+      to: $('#to-lang-select option:selected').val(),
       text:$("#src > textarea").val()
     };
     self.postMessage(msg);

@@ -10,14 +10,12 @@ def make_selectbox(filename)
   array = array.map{|v| v.split }
 
   txt = array.map{|v|
-    "        <option value=\"#{v[0]}\">#{v[1]}</option>"
-  }.join("\n")
+    "<option value=\"#{v[0]}\">#{v[1]}</option>"
+  }.join("")
 
   <<EOF
-      <select id="dst-lang-select" name="dst">
-        <option value="">Auto</option>
-#{txt}
-      </select>
+<div id="from-lang">From: <select id="from-lang-select" name="from"><option value="">Auto</option>#{txt}</select></div>
+<div id="to-lang">To: <select id="to-lang-select" name="to"><option value="">Auto</option>#{txt}</select></div>
 EOF
 end
 
