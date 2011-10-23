@@ -1,3 +1,10 @@
+# 0.4 2011/10/xx
+
+* Hotkey
+  * Replace Translate : 'meta-ctrl-r'
+  * Insert Translate  : 'meta-ctrl-i'
+  * Undo Translate    : 'meta-ctrl-z'
+
 # 0.3 2011/10/23
 
 * Implement "Text Translate".
