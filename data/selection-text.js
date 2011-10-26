@@ -29,32 +29,20 @@ function findSelectionNode (selection) {
   for (var i = 0; i < selection.rangeCount; i++) {
     var range = selection.getRangeAt(i);
 
-//     var result = Traverse.range(
-//       range,
-//       function (node) {
-//         // @todo startOffset, endOffsetに対応
-//         if (node.nodeType == 3) {
-//           var text = node.wholeText;
-//           if (text.replace(/[ \t\n]/g, "").length > 0) {
-//             this.push( new SelectNode(node, range) );
-//           }
-//         }
-//       },
-//     []);
-    
-    var result = Range_walk(
+    var result = Traverse.range(
       range,
       function (node) {
         // @todo startOffset, endOffsetに対応
         if (node.nodeType == 3) {
+          //console.p(node.wholeText);
           var text = node.wholeText;
           if (text.replace(/[ \t\n]/g, "").length > 0) {
             this.push( new SelectNode(node, range) );
           }
         }
       },
-      []);
-
+    []);
+    
     nodes = nodes.concat(result);
   }
 

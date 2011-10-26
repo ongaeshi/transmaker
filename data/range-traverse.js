@@ -82,6 +82,7 @@ var Traverse = {
           node = node.lastChild; 
         }
       }
+      return node;
     }
   },
 
