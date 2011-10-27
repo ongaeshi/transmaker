@@ -20,5 +20,5 @@ $(function() {
 
 // 翻訳結果を受け取る
 self.on('message', function(msg) {
-  $("#dst").text(msg);
+  $("#dst").text( $.unescape(msg) );
 });
