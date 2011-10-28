@@ -63,8 +63,10 @@ var Traverse = {
     
     if (this.isTextNode(node))
       return node;
-    else
+    else {
+      //return (offset == 0) ? node : node.childNodes[offset - 1];
       return node.childNodes[offset - Number(offset === node.length)];
+    }
   },
 
   rangeEndNode: function(range, startNode) {
@@ -75,13 +77,15 @@ var Traverse = {
       return node;
     }
     else {
-      node = node.childNodes[offset - 1];
-      
+      //node = node.childNodes[offset - 1];
+      node = (offset == 0) ? node : node.childNodes[offset - 1];
+
       if (node === startNode) {
         while (node.hasChildNodes()) {
           node = node.lastChild; 
         }
       }
+
       return node;
     }
   },
