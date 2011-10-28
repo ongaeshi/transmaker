@@ -15,6 +15,8 @@ var Dump = {
   },
 
   inspect: function(v) {
+    if (this.is_dom(v))
+      return this.dom_s(v);
     if (this.is_array(v))
       return this.array_s(v);
     else if (typeof v == "object")
@@ -38,6 +40,10 @@ var Dump = {
     return "{" + a.join(", ") + "}";
   },
 
+  is_array: function(v) {
+    return Object.prototype.toString.call(v)=="[object Array]";
+  },
+
   array_s: function(v) {
     var a = [];
     for (var i = 0; i < v.length; i++)
@@ -45,8 +51,35 @@ var Dump = {
     return "[" + a.join(", ") + "]";
   },
 
-  // --------------------------------------
-  is_array: function(v) { return Object.prototype.toString.call(v)=="[object Array]"; }
+  is_dom: function(v) {
+    if ((v && typeof(v.nodeType) == 'number') || v === null) {
+      if (v.nodeType && v.nodeName && v.appendChild)
+        return true;
+    }
+    return false;
+  },
+
+  dom_s: function(v) {
+    return this.obj_s({
+      attributes: v.attributes,
+      baseURI: v.baseURI,
+      childNodes: v.childNodes,
+       firstChild: v.firstChild,
+       lastChild: v.lastChild,
+       localName: v.localName,
+       namespaceURI: v.namespaceURI,
+       nextSibling: v.nextSibling,
+      nodeName: v.nodeName,
+      // nodePrincipal: v.nodePrincipal, // Need UniversalXPConnect privileges.
+      nodeType: v.nodeType,
+      nodeValue: v.nodeValue,
+      ownerDocument: v.ownerDocument,
+      parentNode: v.parentNode,
+      prefix: v.prefix,
+      previousSibling: v.previousSibling,
+      textContent: v.textContent
+    });
+  }
 
 };
 
