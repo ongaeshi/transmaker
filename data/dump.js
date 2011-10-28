@@ -84,7 +84,7 @@ var Dump = {
   },
 
   is_range: function(v) {
-    return (v.startContainer && v.startOffset && v.endContainer && v.endOffset);
+    return v.startContainer !== undefined && v.startOffset  !== undefined && v.endContainer  !== undefined && v.endOffset !== undefined;
   },
 
   range_s: function(v) {
