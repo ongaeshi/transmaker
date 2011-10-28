@@ -15,6 +15,8 @@ var Dump = {
   },
 
   inspect: function(v) {
+    if (this.is_range(v))
+      return this.range_s(v);
     if (this.is_dom(v))
       return this.dom_s(v);
     if (this.is_array(v))
@@ -79,7 +81,19 @@ var Dump = {
       previousSibling: v.previousSibling,
       textContent: v.textContent
     });
-  }
+  },
 
+  is_range: function(v) {
+    return (v.startContainer && v.startOffset && v.endContainer && v.endOffset);
+  },
+
+  range_s: function(v) {
+    return this.obj_s({
+      startContainer: this.inspect(v.startContainer),
+      startOffset: v.startOffset,
+      endContainer: this.inspect(v.endContainer),
+      endOffset: v.endOffset,
+    });
+  }
 };
 
