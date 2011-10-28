@@ -1,9 +1,18 @@
-# 0.4 2011/10/xx
+# 0.4 2011/10/28
 
 * Hotkey
-  * Replace Translate : 'meta-ctrl-r'
-  * Insert Translate  : 'meta-ctrl-i'
-  * Undo Translate    : 'meta-ctrl-z'
+  * OSX
+    * Replace Translate : 'cmd-ctrl-r'
+    * Insert Translate  : 'cmd-ctrl-i'
+    * Undo Translate    : 'cmd-ctrl-z'
+  * Win
+    * Replace Translate : 'alt-shift-r'
+    * Insert Translate  : 'alt-shift-i'
+    * Undo Translate    : 'alt-shift-z'
+
+* Bugfix
+  * Text Translate HTML#unescape.
+  * Fixed a Traverse#range bug.
 
 # 0.3 2011/10/23
 
