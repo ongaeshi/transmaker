@@ -12,7 +12,11 @@ $(function() {
 self.on('message', function(msg) {
   switch (msg.kind) {
    case "save":
-    self.postMessage({kind: "save", data: $('#to-lang-select option:selected').val()});
+    self.postMessage({
+      kind: "save",
+      from: $('#from-lang-select').val(),
+      to: $('#to-lang-select').val()
+    });
     break;
   }
 });
