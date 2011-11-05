@@ -1,3 +1,9 @@
+# 0.5 2011/11/06
+
+* Context-menu add '[TM] Setting'.
+  * Set translation language code.
+* Context-menu add prefix '[TM]'.
+
 # 0.4.1 2011/11/01
 
 * Change icon.png .
