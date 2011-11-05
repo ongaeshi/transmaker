@@ -11,6 +11,10 @@ $(function() {
 // Add-on Script からのメッセージ受け取り
 self.on('message', function(msg) {
   switch (msg.kind) {
+   case "init":
+    $('#from-lang-select').val(msg.translateLang.from);
+    $('#to-lang-select').val(msg.translateLang.to);
+    break;
    case "save":
     self.postMessage({
       kind: "save",
