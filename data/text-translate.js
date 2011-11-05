@@ -3,8 +3,8 @@ $(function() {
   $("#translate-button").click(function(){
     var msg = {
       kind: 'translate',
-      from: $('#from-lang-select option:selected').val(),
-      to: $('#to-lang-select option:selected').val(),
+      from: $('#from-lang-select').val(),
+      to: $('#to-lang-select').val(),
       text:$("#src > textarea").val()
     };
     self.postMessage(msg);
