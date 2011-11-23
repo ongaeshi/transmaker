@@ -16,7 +16,6 @@ var linear = function(t, b, c, d) {
   return c * (t/=d) + b;
 }
 
-
 var replaceAnimation = function (node, dst) {
   // パラメータ
   const CHANGE_MSEC   = 300,
@@ -30,13 +29,11 @@ var replaceAnimation = function (node, dst) {
   var timer = setInterval(function() {
     var rate = easeOutQuad(currentTime, 0, 1, CHANGE_MSEC);
 
-    node.replaceWholeText(dst.substring(0, dst.length * rate) +
-                          src.substring(src.length * rate, src.length));
-
+    replaceTextSafety(node, dst.substring(0, dst.length * rate) + src.substring(src.length * rate, src.length));
     currentTime += INTERVAL_MSEC;
 
     if (currentTime >= CHANGE_MSEC) {
-      node.replaceWholeText(dst);
+      replaceTextSafety(node, dst);
       clearInterval(timer);
     }
   }, INTERVAL_MSEC);
@@ -55,12 +52,12 @@ var insertAnimation = function (node, insertText, insertPos) {
   var timer = setInterval(function() {
     var rate = easeOutQuad(currentTime, 0, 1, CHANGE_MSEC);
 
-    node.replaceWholeText(src.substring(0, insertPos) + insertText.substring(0, insertText.length * rate) + src.substring(insertPos));
+    replaceTextSafety(node, src.substring(0, insertPos) + insertText.substring(0, insertText.length * rate) + src.substring(insertPos));
     
     currentTime += INTERVAL_MSEC;
 
     if (currentTime >= CHANGE_MSEC) {
-      node.replaceWholeText(src.substring(0, insertPos) + insertText + src.substring(insertPos));
+      replaceTextSafety(node, src.substring(0, insertPos) + insertText + src.substring(insertPos));
       clearInterval(timer);
     }
   }, INTERVAL_MSEC);
@@ -83,9 +80,8 @@ var undoAnimation = function (node, dst) {
   var timer = setInterval(function() {
     var rate = 1.0 - linear(currentTime, 0, 1, CHANGE_MSEC);
 
-    node.replaceWholeText(src.substring(0, src.length * rate) +
-                          dst.substring(dst.length * rate, dst.length));
-
+    replaceTextSafety(node, src.substring(0, src.length * rate) + dst.substring(dst.length * rate, dst.length));
+    
     currentTime += INTERVAL_MSEC;
 
     if (currentTime >= CHANGE_MSEC) {
