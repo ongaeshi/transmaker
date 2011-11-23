@@ -1,3 +1,9 @@
+# 0.5.1 2011/11/23
+
+* Security fix
+  * Add replaceTextSafety()
+  * Remove the unescape
+
 # 0.5 2011/11/06
 
 * Context-menu add '[TM] Setting'.
