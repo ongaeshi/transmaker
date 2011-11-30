@@ -25,10 +25,12 @@ var Traverse = {
         break;
 
       // 子供を辿る
-      n = node.firstChild;
-      if (n) {
-        node = n;
-        continue;
+      if (!this.isIgnoreNode(node)) {
+        n = node.firstChild;
+        if (n) {
+          node = n;
+          continue;
+        }
       }
 
       // 兄弟を辿る
@@ -100,7 +102,17 @@ var Traverse = {
     default:
       return false;
     }
+  },
+
+  isIgnoreNode: function(node) {
+    var ignore = { "STYLE":0, "SCRIPT":0, "NOSCRIPT":0, "IFRAME":0, "OBJECT":0 };
+
+    if (node.tagName in ignore)
+      return true;
+    else
+      return false;
   }
+
 };
 
 

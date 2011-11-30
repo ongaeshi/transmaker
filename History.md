@@ -1,3 +1,10 @@
+# 0.5.2 2011/12/01
+
+* Add translatePost() & translateArrayPost() in bing-translater.js. Translate use "POST" method.
+* Removing <script> tags, from translate.
+* When assign node.textContent so was escapeHTML, fix escape double hung.
+* escapeHTML() add "&apos;".
+
 # 0.5.1 2011/11/23
 
 * Security fix
